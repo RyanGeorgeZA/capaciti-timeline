@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: normal 16px "Helvetica Nue", sans-serif;
+    background: midnightblue; /* colour derived from CapaCiTi website colour scheme*/
+    color: #fff;
+    overflow-x: hidden;
+    padding-bottom: 50px;
+}
+
+.intro {
+    background: tomato; /* colour derived from CapaCiTi website colour scheme*/
+    padding: 100px 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 35px; 
+}
+
+.timeline ul {
+    background: midnightblue;
+    padding: 50px 0; /* add space between content and top of div */
+}
+
+.timeline ul li {
+    list-style-type: none;
+    position: relative;
+    width: 6px; /* shrinks content */ 
+    background: #fff; /* adds white line down middle*/
+    margin: 0 auto; /* center content */
+    padding-bottom: 50px; /* padding to create space between each list item*/
+}
+
+.timeline ul li div {
+    position: relative;
+    width: 400px; /* increase width of div containing content*/
+    padding: 15px; /* padding to create space between div and div content */
+    bottom: 0;
+    background: tomato;
+}
+
+.timeline ul li:nth-child(odd) div { /* in order to manipulate every odd-numbered list item */
+    left: 45px; /* moves odd-numbered divs to the right side of vertical white line */
+    transform: translate3d(100px, 0, 0);
+}
+
+.timeline ul li:nth-child(even) div { /* in order to manipulate every even-numbered list item */
+    left: -450px; /* move even-numbered divs to the left of vertical white line */
+    transform: translate3d(-100px, 0, 0);
+}
+
+span {
+    display: block; /* ensure that the year and title of timeline event is displayed in a separate line from event description*/
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+
+.timeline ul li div { 
+    visibility: hidden; /* ensures that divs containing list items are hidden from view */
+    opacity: 0; /* transitions from opaque to full visibility */
+    transition: all .7s ease-out; /* add animation to all divs containing list items, with 0.7s delay in transition and move in fast at first then slow down  */
+}
+
+.timeline ul li.in-view div {
+    visibility: visible; /* once the divs containing list items are in view, they should become visible */
+    opacity: 1; /* transitions from opaque to full visibility */
+    transform: none;
+}
+
+/* For responsiveness */
+@media screen and (max-width: 900px) {
+    .timeline ul li div {
+        width: 250px;
+    }
+
+    .timeline ul li:nth-child(even) div {
+        left: -289px; 
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .timeline ul li div {
+        width: 250px;
+    }
+
+    .timeline ul li:nth-child(even) div {
+        left: 45px;
+    }
+
+}
